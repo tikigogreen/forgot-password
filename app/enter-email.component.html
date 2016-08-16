@@ -1,0 +1,16 @@
+<form #f="ngForm">
+
+  <div class="form-group">
+    <label for="emailAddress">Enter Email Address</label>
+    <input type="email" class="form-control" id="emailAddress" placeholder="name@email.com" name="emailAddress">
+  </div>
+
+  <div class="btn-wrapper">
+    <button type="submit" class="btn btn-primary btn-block" (click)="submitEmail()">CONTINUE</button>
+    <button type="button" class="btn btn-link btn-block">Cancel</button>
+  </div>
+
+</form>
+
+
+
