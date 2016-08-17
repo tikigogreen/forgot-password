@@ -20,4 +20,3 @@ function validateEmail(c: FormControl) {
 })
 
 export class EmailValidator {}
-

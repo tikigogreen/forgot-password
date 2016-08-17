@@ -1,16 +1,37 @@
-<form #f="ngForm">
+<div class="container">
 
-  <div class="form-group">
-    <label for="emailAddress">Enter Email Address</label>
-    <input type="email" class="form-control" id="emailAddress" placeholder="name@email.com" name="emailAddress">
+  <div  [hidden]="submitted">
+    <h1>Enter Email Form</h1>
+    <form (ngSubmit)="onSubmit()" #enterEmailForm="ngForm">
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email"
+               required
+               [(ngModel)]="model.email" name="email"
+               #email="ngModel"
+               #spy >
+        <br>TODO: remove this: {{spy.className}}
+        <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+          Email is required
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-default" [disabled]="!enterEmailForm.form.valid">Submit</button>
+
+    </form>
   </div>
 
-  <div class="btn-wrapper">
-    <button type="submit" class="btn btn-primary btn-block" (click)="submitEmail()">CONTINUE</button>
-    <button type="button" class="btn btn-link btn-block">Cancel</button>
+  <div [hidden]="!submitted">
+
+    <h2>Thank you.</h2>
+    <p>You have entered:</p>
+
+    <div class="row">
+      <div class="col-xs-3">email</div>
+      <div class="col-xs-9  pull-left">{{ model.email }}</div>
+    </div>
+
   </div>
 
-</form>
-
-
-
+</div>
