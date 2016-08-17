@@ -20,7 +20,7 @@ function validateEmail(c: FormControl) {
 })
 
 export class EmailValidator {
-  validate(c: FormControl) {
-    return this.validator(c);
-  }
+  // validate(c: FormControl) {
+  //   return this.validator(c);
+  // }
 }

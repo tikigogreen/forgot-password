@@ -1,24 +1,25 @@
 <div class="container">
 
-  <div  [hidden]="submitted">
+  <div [hidden]="submitted">
     <h1>Enter Email Form</h1>
-    <form (ngSubmit)="onSubmit()" #enterEmailForm="ngForm">
+    <form (ngSubmit)="onSubmit()" [formGroup]="enterEmailForm">
 
-      <div class="form-group">
+      <div class="form-group" formGroupName="details">
         <label for="email">Email</label>
-        <input type="text" class="form-control" id="email"
-               required
-               [(ngModel)]="model.email" name="email"
-
-               #email="ngModel"
+        <input type="text" class="form-control"
+               id="email" name="email"
+               formControlName="email"
                #spy >
         <br>TODO: remove this: {{spy.className}}
-        <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
-          Email is required
-        </div>
+        <!--<div [hidden]="email.valid || email.pristine" class="alert alert-danger">-->
+          <!--Email is required-->
+        <!--</div>-->
       </div>
 
-      <button type="submit" class="btn btn-default" [disabled]="!enterEmailForm.form.valid">Submit</button>
+      <!--<button type="submit" class="btn btn-default" [disabled]="!enterEmailForm.form.valid">Submit</button>-->
+      <button type="submit" class="btn btn-default">Submit</button>
+
+      {{ enterEmailForm.value | json }}
 
     </form>
   </div>
@@ -30,9 +31,20 @@
 
     <div class="row">
       <div class="col-xs-3">email</div>
-      <div class="col-xs-9  pull-left">{{ model.email }}</div>
+      <div class="col-xs-9  pull-left">{{ user.email }}</div>
     </div>
 
   </div>
+
+  <!--<form [formGroup]="myForm">-->
+    <!--<div formGroupName="name">-->
+      <!--<input formControlName="first" #spy>-->
+      <!--<br>TODO: remove this: {{spy.className}}-->
+      <!--<input formControlName="last">-->
+    <!--</div>-->
+    <!--<button type="submit" class="btn btn-default">Submit</button>-->
+  <!--</form>-->
+
+  <!--{{ myForm.value | json }}-->
 
 </div>
