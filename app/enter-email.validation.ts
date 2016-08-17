@@ -19,4 +19,8 @@ function validateEmail(c: FormControl) {
   ]
 })
 
-export class EmailValidator {}
+export class EmailValidator {
+  validate(c: FormControl) {
+    return this.validator(c);
+  }
+}

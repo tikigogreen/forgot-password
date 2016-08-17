@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {} from '.user';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+
 import {User} from "./user";
+import { EmailValidator } from  './enter-email.validation';
 
 // import { Router } from '@angular/router';
 // import { FormsModule, FormGroup, FormControl, Validators, Control, ControlGroup, FormBuilder } from '@angular/forms';
-// import { EmailValidator } from  './enter-email.validation';
+
 
 @Component({
   selector: 'enter-email',
@@ -16,7 +18,14 @@ export class EnterEmailComponent implements OnInit {
   model = new User(1, '', '');
   submitted = false;
 
+  form: FormGroup;
+  constructor(private fb: FormBuilder) {}
+
   ngOnInit () {
+
+    this.form = new FormGroup({
+        email: new FormControl('', [ Validators.required ])
+    });
 
   }
 
