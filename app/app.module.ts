@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
 
 import { AppComponent }  from './app.component';
 import { routing }       from './app.routing';
-import { EmailValidator } from './enter-email.validation';
+// import { EmailValidator } from './enter-email.validation';
 
 import { EnterEmailComponent } from './enter-email.component';
 import { HeroFormComponent } from './hero-form.component';
@@ -19,7 +19,7 @@ import { HeroFormComponent } from './hero-form.component';
   declarations: [
     AppComponent,
     EnterEmailComponent,
-    EmailValidator,
+    // EmailValidator,
     HeroFormComponent
   ],
   bootstrap: [ AppComponent ]

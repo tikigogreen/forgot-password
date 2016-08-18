@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Control, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import {NgClass} from '@angular/common';
 // import { EmailValidator } from  './enter-email.validation';
 
 @Component({
   selector: 'enter-email',
-  templateUrl: 'app/enter-email.component.html'
+  templateUrl: 'app/enter-email.component.html',
+  styleUrls: ['app/form.css'],
+  directives: [NgClass]
 })
 
 export class EnterEmailComponent implements OnInit {
@@ -14,10 +17,12 @@ export class EnterEmailComponent implements OnInit {
   submitted = false;
 
   user = {
-    details: {
-      email: '',
-      password: ''
-    }
+    // details: {
+    //   email: '',
+    //   password: ''
+    // }
+    email: '',
+    password: ''
   };
 
   // enterEmailForm = new FormGroup({
@@ -30,11 +35,10 @@ export class EnterEmailComponent implements OnInit {
   enterEmailForm: FormGroup;
   emailCtrl = new FormControl('', [
     Validators.required,
-    Validators.minLength(4),
-    Validators.pattern('[A-Za-z]{5}')
+    Validators.minLength(10)
   ]);
 
-  constructor() {
+  constructor(builder: FormBuilder) {
     this.enterEmailForm = new FormGroup({
       'email': this.emailCtrl
     })
@@ -44,5 +48,9 @@ export class EnterEmailComponent implements OnInit {
     this.submitted = true;
   }
 
-  get diagnostic() { return JSON.stringify(this.user); }
+  get diagnostic() { return JSON.stringify(this.enterEmailForm.value.email); }
+
+  get value(): string {
+    return JSON.stringify(this.enterEmailForm.value, null, 2);
+  }
 }

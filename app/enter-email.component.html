@@ -13,9 +13,8 @@
                #spy >
 
         <div [hidden]="enterEmailForm.valid || enterEmailForm.pristine">
-        <!--<div *ngIf = "emailCtrl.touched && !emailCtrl.valid">-->
-          <div *ngIf = "emailCtrl.errors.required">
-            <span style="color: red">Please Enter Email Address</span>
+          <div *ngIf = "!emailCtrl.value.required">
+            <span style="color: red">Required</span>
           </div>
           <div *ngIf = "!emailCtrl.valid.minLength">
             <span style="color: red">Too Short!</span>
@@ -24,20 +23,13 @@
 
         <br>TODO: remove this: {{spy.className}}
         <br>
-
-
-
-          <!--<div *ngIf = "emailCtrl.errors.required">-->
-            <!--<span style="color: red">Please Enter Email Address</span>-->
-          <!--</div>-->
-          <!--<div *ngIf = "emailCtrl.errors.minLength">-->
-            <!--<span style="color: red">Please Enter Email Address</span>-->
-          <!--</div>-->
-
-
+        <div *ngIf = "!emailCtrl.valid.required">Test emailCtrl NOT Valid</div>
 
         <p> valid: {{ emailCtrl.valid }}</p>
         <p> value: {{ emailCtrl.value }}</p>
+
+        <h3>Form value:</h3>
+        <pre>{{value}}</pre>
 
       </div>
 
@@ -53,7 +45,7 @@
       </div>
 
       <p>enterEmailForm value:</p>
-      {{ enterEmailForm.value | json }}
+      {{ enterEmailForm.value | json }} <br>
 
       <p>diagnostic value:</p>
       {{ diagnostic }}
