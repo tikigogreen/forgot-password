@@ -24,6 +24,7 @@
         <div [hidden]="enterEmailForm.valid || enterEmailForm.pristine">
           <p *ngIf="email.hasError('required')">Email is required</p>
           <p *ngIf="!email.hasError('required') && email.hasError('invalidEmail')">Wrong Email Format</p>
+          <p *ngIf="email.hasError('minlength')">Too Short</p>
         </div>
 
         <br>TODO: remove this: {{spy.className}}
@@ -53,9 +54,6 @@
 
       <p>enterEmailForm value:</p>
       {{ enterEmailForm.value | json }} <br>
-
-      <p>diagnostic value:</p>
-      {{ diagnostic }}
 
     </form>
   </div>
