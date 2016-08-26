@@ -64,25 +64,31 @@ export class EnterEmailComponent implements OnInit {
   enterEmailForm: FormGroup;
   email: AbstractControl;
 
-  static testTiki(fieldControl: Control){
-    if (fieldControl.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
-      return null;
-    } else {
-      return { invalidEmail: true };
-    }
-  }
-
   constructor(private builder: FormBuilder) {
     this.enterEmailForm = builder.group({
       'email' : ['', [
         EmailValidator.emailFormat,
         Validators.required,
-        Validators.minLength(20)
+        Validators.minLength(7)
       ]]
     });
     this.email = (<FormGroup>this.enterEmailForm).controls['email'];
   }
 
+  // #4
+  // enterEmailForm: FormGroup;
+  // email: FormControl;
+  //
+  // constructor (builder: FormBuilder) {
+  //   this.email = new FormControl('', [
+  //     EmailValidator.emailFormat,
+  //     Validators.required,
+  //     Validators.minLength(5)
+  //   ]);
+  //   this.enterEmailForm = builder.group({
+  //     email: this.email
+  //   });
+  // }
 
   // Error:(70, 38) TS2345: Argument of type '(((control: AbstractControl) => { [key: string]: boolean; }) | ((control: Control) => { invalidEm...' is not assignable to parameter of type 'ValidatorFn[]'.
   // Type '((control: AbstractControl) => { [key: string]: boolean; }) | ((control: Control) => { invalidEma...' is not assignable to type 'ValidatorFn'.
@@ -94,6 +100,7 @@ export class EnterEmailComponent implements OnInit {
   onSubmit() {
 
     this.submitted = true;
+    console.log(this.enterEmailForm.value);
   }
 
   // get diagnostic() { return JSON.stringify(this.enterEmailForm.value.email); }
