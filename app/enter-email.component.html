@@ -12,24 +12,31 @@
                formControlName="email"
                #spy >
 
+        <!--<div [hidden]="enterEmailForm.valid || enterEmailForm.pristine">-->
+          <!--<div *ngIf = "!emailCtrl.value.required">-->
+            <!--<span style="color: red">Required</span>-->
+          <!--</div>-->
+          <!--<div *ngIf = "!emailCtrl.valid.minLength">-->
+            <!--<span style="color: red">Too Short!</span>-->
+          <!--</div>-->
+        <!--</div>-->
+
         <div [hidden]="enterEmailForm.valid || enterEmailForm.pristine">
-          <div *ngIf = "!emailCtrl.value.required">
-            <span style="color: red">Required</span>
-          </div>
-          <div *ngIf = "!emailCtrl.valid.minLength">
-            <span style="color: red">Too Short!</span>
-          </div>
+          <p *ngIf="email.hasError('required')">Email is required</p>
+          <p *ngIf="!email.hasError('required') && email.hasError('invalidEmail')">Wrong Email Format</p>
         </div>
 
         <br>TODO: remove this: {{spy.className}}
         <br>
-        <div *ngIf = "!emailCtrl.valid.required">Test emailCtrl NOT Valid</div>
+        <!--<div *ngIf = "!emailCtrl.valid.required">Test emailCtrl NOT Valid</div>-->
 
-        <p> valid: {{ emailCtrl.valid }}</p>
-        <p> value: {{ emailCtrl.value }}</p>
+        <!--<p> valid: {{ emailCtrl.valid }}</p>-->
+        <!--<p> value: {{ emailCtrl.value }}</p>-->
 
         <h3>Form value:</h3>
         <pre>{{value}}</pre>
+        <pre> {{ enterEmailForm.controls['email'].valid }} </pre>
+        <pre> {{ email.valid }} </pre>
 
       </div>
 

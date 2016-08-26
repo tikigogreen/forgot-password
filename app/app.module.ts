@@ -14,7 +14,7 @@ import { HeroFormComponent } from './hero-form.component';
     BrowserModule,
     routing,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: [
     AppComponent,
