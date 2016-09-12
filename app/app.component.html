@@ -1,0 +1,70 @@
+<h1 class="text-center">Submit Repair Receipt</h1>
+
+<form [formGroup]="submitRecepitForm">
+
+  <div class="form-group">
+    <label>Your Claim Number</label>
+    <div>23475928734958729</div>
+  </div>
+
+  <div class="form-group">
+    <label>Your Device</label>
+    <div>Samsung Galaxy S7</div>
+  </div>
+
+  <div class="form-group">
+    <label>Confirm Repair Location</label>
+    <div class="radio">
+      <label>
+        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+        <div>34795 sjfdhk</div>
+        <div>360 3rd Street</div>
+        <div>San Francisco, CA 94114</div>
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+        Other
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Enter Repair Date</label>
+    <input class="form-control"
+           id="repairDate" name="repairDate"
+           formControlName="repairDate">
+  </div>
+
+  <div class="form-group">
+    <label>Enter Total Repair Cost</label>
+    <div class="input-group">
+      <span class="input-group-addon">$</span>
+      <input class="form-control" type="text"
+             id="repairCost" name="repairCost"
+             fomrControlName="repairCost">
+    </div>
+
+    <div [hidden]="submitRecepitForm.valid || submitRecepitForm.pristine">
+      <p *ngIf="repairCost.hasError('required')">Total Repair Cost is required</p>
+    </div>
+
+  </div>
+
+  <h4>Upload Receipt(s)</h4>
+
+  <p>
+    You can upload up to 3 receipts separately.<br>
+    Maximum size per file: 5MB Accepted formats: JPEG, JPG, PNG, and PDF<br>
+    Valid receipts need to include store informantion, date of repair, and itemized total.
+  </p>
+
+  <h3>Form value:</h3>
+  <pre>{{value}}</pre>
+  <pre>{{ submitRecepitForm.controls['repairCost'].valid }}</pre>
+  <pre>{{ submitRecepitForm.valid }}</pre>
+
+  <button type="submit" class="btn btn-primary btn-block">SUBMIT THIS RECEIPT</button>
+
+</form>
